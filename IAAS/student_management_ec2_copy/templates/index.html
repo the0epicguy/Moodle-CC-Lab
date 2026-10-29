@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Management System</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 18px; color: #202938; background: #f5f7fb; }
+    h1 { margin-bottom: 8px; }
+    .card { background: white; padding: 22px; margin: 18px 0; border-radius: 12px; box-shadow: 0 2px 12px #15213a12; }
+    form { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+    input, button { padding: 11px; border-radius: 7px; border: 1px solid #ccd3df; font-size: 15px; }
+    button { background: #175cd3; color: white; border: 0; cursor: pointer; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #e5e9f0; }
+    th { background: #f0f4fa; }
+    .note { color: #5a6475; font-size: 14px; }
+    .table-wrap { overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Student Management System</h1>
+  <p class="note">Cloud Computing Lab demonstration application hosted on AWS EC2</p>
+
+  <section class="card">
+    <h2>Add a student</h2>
+    <form method="post" action="/">
+      <input name="name" placeholder="Student name" required maxlength="100">
+      <input name="course" placeholder="Course / department" required maxlength="100">
+      <button type="submit">Add student</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Student records</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Name</th><th>Course / Department</th></tr></thead>
+        <tbody>
+          {% for student in students %}
+          <tr><td>{{ student.id }}</td><td>{{ student.name }}</td><td>{{ student.course }}</td></tr>
+          {% else %}
+          <tr><td colspan="3">No student records yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Demo limitation: records are stored in process memory. They may disappear after a restart, and this app is not designed for real student data.</p>
+  </section>
+</body>
+</html>
