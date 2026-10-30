@@ -1,0 +1,13 @@
+﻿{
+  "name": "cc-docker-kubernetes-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A hostname-based web application for demonstrating Docker and Kubernetes",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
